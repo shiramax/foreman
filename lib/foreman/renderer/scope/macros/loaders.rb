@@ -5,6 +5,20 @@ module Foreman
         module Loaders
           include Foreman::Renderer::Errors
 
+          # TODO all helpers
+          apipie :method, 'Loads hosts objects' do
+            desc "This macro returns a collection of Hosts matching search criteria.
+              The collection is limited to what objects the current user is authorized to view. Also it's loaded in bulk
+              of 1 000 records."
+            param_group :load_resource_keywords
+            returns array_of: Host, desc: 'The collection that can be iterated over using each_record'
+            example "<% load_hosts.each_record do |host| %>
+  <%= host.name %>, <%= host.ip %>
+<% end %>", desc: 'Prints host name and ip of each host'
+            example "<% load_hosts(search: 'domain = example.com', includes: [ :interfaces ]).each_record do |host| %>
+  <%= host.name %>, <%= host.interfaces.map { |i| i.mac }.join(', ') %>
+<% end %>"
+end
           LOADERS = [
             [ :load_organizations, Organization, :view_organizations ],
             [ :load_locations, Location, :view_locations ],
