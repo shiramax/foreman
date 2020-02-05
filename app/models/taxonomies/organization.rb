@@ -1,10 +1,11 @@
 class Organization < Taxonomy
   extend ApipieDSL::Class
 
-  apipie :class, desc: 'A class representing an organization object' do
+  # TODO use paramgroup with id, created_at, updated_at
+  apipie :class, desc: 'A class representing an Organization object' do
     sections only: %w[all additional]
-    property :name, String, desc: 'Name of the Organization'
-    property :title, String, desc: 'Title of the Organization'
+    property :name, String, desc: 'Name of the Organization, e.g. Red Hat'
+    property :title, String, desc: 'Title of the Organization. Comparing to the name, Title also includes names of all parent Organizations, e.g. Red Hat/Engineering'
     property :description, String, desc: 'Description of the Organization'
   end
   extend FriendlyId

@@ -1,10 +1,11 @@
 class Location < Taxonomy
   extend ApipieDSL::Class
 
+  # TODO use paramgroup with id, created_at, updated_at
   apipie :class, desc: 'A class representing a location object' do
     sections only: %w[all additional]
-    property :name, String, desc: 'Name of the Location'
-    property :title, String, desc: 'Title of the Location'
+    property :name, String, desc: 'Name of the Location, e.g. Europe'
+    property :title, String, desc: 'Title of the Location. Comparing to the Name, Title contains also names of all parent Locations, e.g. Europe/Prague'
     property :description, String, desc: 'Description of the Location'
   end
   extend FriendlyId
