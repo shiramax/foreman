@@ -13,6 +13,8 @@ ApipieDSL.configure do |config|
   config.languages = ENV['FOREMAN_APIPIE_LANGS'].try(:split, ' ') || FastGettext.available_locales
   config.default_locale = FastGettext.default_locale
   config.locale = ->(loc) { loc ? FastGettext.set_locale(loc) : FastGettext.locale }
+  # TODO enable?
+  config.validate = false
 
   config.translate = lambda do |str, loc|
     old_loc = FastGettext.locale

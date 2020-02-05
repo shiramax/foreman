@@ -217,7 +217,11 @@ module Foreman
             host.get_status(klass)
           end
 
-          # TODO apipie
+          apipie :method, desc: "Returns a name of a given users auth source" do
+            required :user, User, desc: "a user for which the auth source name will be returned"
+            returns String, desc: 'An auth source name of specified user, nil if auth source could not be found'
+            example '<% load_users(search: "admin = true").each_record { |u| report_row login: u.login, auth_source: user_auth_source_name(u)  } -%>\n<%= report_render %>'
+          end
           def user_auth_source_name(user)
             user.auth_source&.name
           end
