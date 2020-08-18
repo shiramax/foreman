@@ -11,10 +11,8 @@ const StatisticsPage = ({ statisticsMeta, discussionUrl, ...props }) => (
       <span className="pficon pficon-warning-triangle-o" />
       <strong>This functionality is deprecated </strong>
       <span className="text">
-        and will be removed in version 2.2. If you wish continue using it, you
-        will need to install the Foreman Statistics plugin when upgrading to
-        2.2.
-        <a href={discussionUrl} target="_blank" rel="noreferrer">
+        and will be removed in version 6.9.
+        <a href="https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/release_notes/index" target="_blank" rel="noreferrer">
           Join discussion
         </a>
       </span>
